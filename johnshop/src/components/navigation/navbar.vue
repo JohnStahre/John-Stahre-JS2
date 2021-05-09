@@ -179,8 +179,8 @@
           <li><a class="dropdown-item dropdown-end" href="#">my Account</a></li>
         </ul>
       </li>
-
-        <li v-if="!loggedin">
+<!-- denna funktion visar om den är inloggad eller inte som senare data i export default nedanför hänvisar till true eller false -->
+        <li v-if="!loggedIn">
           <router-link class="nav-link" to="/Login">Login</router-link>
         </li>
 
@@ -195,6 +195,11 @@
 
 <script>
 export default {
+  data(){
+    return {
+      loggedIn: false
+    }
+  }
 
 }
 </script>
