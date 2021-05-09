@@ -1,25 +1,25 @@
 <template>
   <!-- Navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container-fluid justify-content-between">
+  <div class="container justify-content-between">
       <!-- nedan för att ladda startsidan i den vill vi ha loggan -->
       <router-link class="navbar-brand" to="/">  <i class="fas fa-place-of-worship me-2"></i> JohnShop.se 
       </router-link>
        <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <router-link class="nav-link active" aria-current="page" to="/">Home</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <router-link class="nav-link" aria-current="page" to="/products">Products</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <router-link class="nav-link" aria-current="page" to="about">About</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
-            >Disabled</a
-          >
+          <router-link class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
+            >Disabled</router-link>
+          
         </li>
       </ul>
     </div>
@@ -127,11 +127,11 @@
           class="dropdown-menu dropdown-menu-end"
           aria-labelledby="navbarDropdownMenuLink"
         >
-          <li><a class="dropdown-item" href="#">Some news</a></li>
-          <li><a class="dropdown-item" href="#">Another news</a></li>
+          <li><a class="dropdown-item" href="#">Favorites</a></li>
+          <!-- <li><a class="dropdown-item" href="#">Another news</a></li>
           <li>
             <a class="dropdown-item" href="#">Something else here</a>
-          </li>
+          </li> -->
         </ul>
       </li>
       <li class="nav-item dropdown me-3 me-lg-1">
@@ -151,13 +151,15 @@
           class="dropdown-menu dropdown-menu-end"
           aria-labelledby="navbarDropdownMenuLink"
         >
-          <li><a class="dropdown-item" href="#">Some news</a></li>
-          <li><a class="dropdown-item" href="#">Another news</a></li>
+          <li><a class="dropdown-item" href="#">My cart</a></li>
+          <!-- <li><a class="dropdown-item" href="#">Another news</a></li>
           <li>
             <a class="dropdown-item" href="#">Something else here</a>
-          </li>
+          </li> -->
         </ul>
       </li>
+      
+      
       <li class="nav-item dropdown me-3 me-lg-1">
         <a
           class="nav-link dropdown-toggle hidden-arrow"
@@ -165,22 +167,26 @@
           id="navbarDropdownMenuLink"
           role="button"
           data-mdb-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <i class="fas fa-chevron-circle-down fa-lg"></i>
+          aria-expanded="false">
+
+          <i class="far fa-user"></i>
         </a>
+        
         <ul
           class="dropdown-menu dropdown-menu-end"
-          aria-labelledby="navbarDropdownMenuLink"
-        >
-          <li><a class="dropdown-item" href="#">Some news</a></li>
-          <li><a class="dropdown-item" href="#">Another news</a></li>
-          <li>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </li>
+          aria-labelledby="navbarDropdownMenuLink">
+
+          <li><a class="dropdown-item dropdown-end" href="#">my Account</a></li>
         </ul>
       </li>
+
+        <li v-if="!loggedin">
+          <router-link class="nav-link" to="/Login">Login</router-link>
+        </li>
+
     </ul>
+
+
     <!-- Right elements -->
   </div>
 </nav>
