@@ -12,4 +12,5 @@ const productSchema = mongodb.Schema({
     modified:   {type: Date, default: Date.now }
 })
 
-module.exports = mongodb.model('Product', productSchema);
+// inom parantesen döper vi collection i MongoDB exempelvis product
+module.exports = mongodb.model('product', productSchema);

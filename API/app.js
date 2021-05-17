@@ -5,12 +5,17 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 
+// IMPORTERA CONTROLLERS
 const productControler = require('./controlers/productcontroler');
+
+// MIDDLEWARES
 
 app.use(cors());
 app.use(express.urlencoded({extended: false}))
 // nedan json så det kan snacka med json
 app.use(express.json());
+
+// CONTROLLERS
 
 // när vi gått vidare från server.js lhost999 och skriver api/products då vill vi använda productControler
 app.use('/api/products', productControler);

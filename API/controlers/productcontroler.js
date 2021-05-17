@@ -1,8 +1,5 @@
 // vet inte varför jag la in denna
-// const { Router } = require('express');
-// 
-// 
-
+const { Router } = require('express');
 const router = require('express').Router();
 const productModel = require('../models/products/productModel');
 
