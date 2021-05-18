@@ -120,6 +120,7 @@ exports.updateProduct = (req, res) => {
                 })
             })
 
+
             // ifall produkten inte finns
         } else {
             res.status(404).json({
@@ -130,6 +131,51 @@ exports.updateProduct = (req, res) => {
         }
     })
     
+}
+
+// gör en funktion som ska kunna ta bort produkt som vi också slänger in i controler
+exports.deleteProduct = (req, res) => {
+// kollar om produkten finns
+    Product.exists({_id: req.params.id }, (err, result) => {
+        if(err){
+            return res.status(400).json({
+                stausCode: 400,
+                status: false,
+                message: 'Bad request'
+            })
+        }
+
+        if(result) {
+            // om produkten finns tar vi bort den
+            Product.deleteOne({_id: req.params.id})
+            // vi väntar på detta om det går bra och om det går bra så skickar vi en respons på en status 200 att det gick bra
+            .then(() => {
+                res.status(200).json({
+                    statusCode: 200,
+                    status:true,
+                    message: 'Product deleted'
+                })
+            })
+            // om nåt går fel gör vi en catch
+            .catch(err => {
+                res.status(500).json({
+                    statusCode:500,
+                    status: false,
+                    message: 'failed to delete product',
+                    err
+                })
+            })
+
+        } else {
+            res.status(404).json({
+                statusCode: 404,
+                status: false,
+                message: err || 'ooops,this product does not exist'
+            })
+        
+        }
+
+    })
 }
 
 

@@ -7,6 +7,7 @@ const cors = require('cors');
 
 // IMPORTERA CONTROLLERS
 const productControler = require('./controlers/productcontroler');
+const userControler = require('./controlers/userControler');
 
 // MIDDLEWARES
 
@@ -19,7 +20,8 @@ app.use(express.json());
 
 // när vi gått vidare från server.js lhost999 och skriver api/products då vill vi använda productControler
 app.use('/api/products', productControler);
-// app.use('/api/user', userControler);
+// app.use('/api/users', userControler); 
+
 
 
 module.exports = app;

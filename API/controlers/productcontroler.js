@@ -8,8 +8,13 @@ const productModel = require('../models/products/productModel');
 router.get('/', productModel.getProducts);
 router.get('/:id', productModel.getProducts);
 
+// skapar ny produkt i databasen
 router.post('/new', productModel.createProduct);
 
+// obs patch funktionen funkar inte än i postman
 router.patch('/:id', productModel.updateProduct);
+
+// tar bort produkt från databasen
+router.delete('/:id', productModel.deleteProduct);
 
 module.exports = router;
