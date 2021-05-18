@@ -45,7 +45,8 @@ exports.getProducts = (req, res) => {
     }
 }
 
-// kollar om det finns produkt i databas jämför namnet, där vi kan få ett error eller resultat
+// funktion för att skapa produktkollar om det finns produkt i databas jämför namnet, där vi kan få ett error eller resultat
+// skickar alltid känslig data med post och inte med get
 exports.createProduct = (req, res) => {
     Product.exists({ name: req.body.name }, (err, result) => {
         if(err) {
@@ -74,7 +75,7 @@ exports.createProduct = (req, res) => {
             res.status(201).json({
                 stausCode: 201,
                 status: true,
-                message: 'Product createdsuccessfully'
+                message: 'Product created successfully'
             })
         })
         .catch(err => {
@@ -87,6 +88,50 @@ exports.createProduct = (req, res) => {
         })
     })
 }
+
+exports.updateProduct = (req, res) => {
+
+    product.exists({_id:req.params.id}, (err, result) => {
+        if(err) {
+            return res.status(400).json({
+                stausCode: 400,
+                status:false,
+                message: 'Bad request'
+            })
+        }
+        // om produkten finns och om vi vill uppdatera en produkt, får inte till det riktigt
+        if(result) {
+            Product.updateOne({_id: req.params.id}, {
+                ...req.body,
+                modified: Date.now()
+            })
+            .then(() => {
+                res.status(200).json({
+                    stausCode: 200,
+                    status: true,
+                    message: 'Product updated with success'
+                })
+            })
+            .catch(() => {
+                res.status(500).json({
+                    statusCode: 500,
+                    status: false,
+                    message: 'failed to update product'
+                })
+            })
+
+            // ifall produkten inte finns
+        } else {
+            res.status(404).json({
+                statusCode: 404,
+                status: false,
+                message: err || 'Hoppsan this product does not exist'
+            })
+        }
+    })
+    
+}
+
 
 // ett annat sätt att göra det på
 
