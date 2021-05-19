@@ -91,9 +91,9 @@ exports.loginUser = (req, res) => {
     
             if(result) {
                     res.status(200).json({
-                        statusCode: 400,
-                        status: false,
-                        message: 'You made a bad request',
+                        statusCode: 200,
+                        status: true,
+                        message: 'User updated successfuly',
                         token: auth.generateToken(user)
                     })
                 }else{
@@ -107,17 +107,4 @@ exports.loginUser = (req, res) => {
         })
     })
 }
-       // if(result) {
-            //     res.status(200).json({
-            //         statusCode: 400,
-            //         status: false,
-            //         message: 'You made a bad request',
-            //         token: 'token'
-            //     })
-            // }else{
-            //     res.status(401).json({
-            //         statusCode: 401,
-            //         status: false,
-            //         message: 'Incorrect email or password'
-            //     })
-            // }
+       
