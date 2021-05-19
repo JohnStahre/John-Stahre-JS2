@@ -3,7 +3,7 @@ const User = require('../users/userSchema');
 const bcrypt = require('bcrypt');
 const auth = require('../../authentication/auth')
 
-exports.registerUser = (req, res) = > {
+exports.registerUser = (req, res) => {
 
     User.exists({ email: req.body.email }, (err, result) => {
         if(err) {
@@ -79,8 +79,7 @@ exports.loginUser = (req, res) => {
             })
         }
 
-        bcrypt.compare(req.body.password, user.passwordHash,
-            
+        bcrypt.compare(req.body.password, user.passwordHash, (err, result) => {
             if(err) {
                 return res.status(400).json({
                     statusCode: 400,
@@ -89,7 +88,7 @@ exports.loginUser = (req, res) => {
                     err
                 })
             }
-
+    
             if(result) {
                     res.status(200).json({
                         statusCode: 400,
@@ -104,7 +103,8 @@ exports.loginUser = (req, res) => {
                         message: 'Incorrect email or password'
                     })
                 }
-            })
+            
+        })
     })
 }
        // if(result) {

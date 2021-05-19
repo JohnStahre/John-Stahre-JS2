@@ -20,7 +20,7 @@ app.use(express.json());
 
 // när vi gått vidare från server.js lhost999 och skriver api/products då vill vi använda productControler
 app.use('/api/products', productControler);
-// app.use('/api/users', userControler); 
+app.use('/api/users', userControler); 
 
 
 

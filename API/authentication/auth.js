@@ -8,7 +8,7 @@ exports.generateToken = user => {
     return jwt.sign({id: user_id}, secretKey, {expiresIn: '1h'})
 }
 
-exports.verifyToken = (req, res, next) {
+exports.verifyToken = (req, res, next) => {
 
     try {
         // splittar bara för att fåå token delen, då den skickas som en beare
