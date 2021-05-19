@@ -91,7 +91,7 @@ exports.createProduct = (req, res) => {
 
 exports.updateProduct = (req, res) => {
 
-    product.exists({_id:req.params.id}, (err, result) => {
+    Product.exists({_id:req.params.id}, (err, result) => {
         if(err) {
             return res.status(400).json({
                 stausCode: 400,
