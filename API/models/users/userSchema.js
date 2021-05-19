@@ -8,7 +8,7 @@ const userSchema = mongodb.Schema({
     passwordHash:   {type: String, required: true},
 
     created:        { type: Date, default: Date.now },
-    modified:        { type: Date, default: Date.now }
+    modified:       { type: Date, default: Date.now }
 })
 
 module.exports = mongodb.model('User',userSchema);
