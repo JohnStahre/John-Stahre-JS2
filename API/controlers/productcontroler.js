@@ -2,19 +2,21 @@
 // const { Router } = require('express');
 const router = require('express').Router();
 const productModel = require('../models/products/productModel');
+const auth = require('../authentication/auth');
 
 // anger endpoints som matchas med API i postman och kan byggas på i '/' eller att det plockas ur en produkt exempel: '/all/products/id'
 // vilken endpoint jag vill gå mot och när det görs hämtar vi filen productModel och kör funktionen .getPRoducts
 router.get('/', productModel.getProducts);
 router.get('/:id', productModel.getProducts);
 
+// de tre sista här vill vi begränsa och lägger in aut, token och middelware
 // skapar ny produkt i databasen
-router.post('/new', productModel.createProduct);
+router.post('/new', auth.verifyToken, productModel.createProduct);
 
 // obs patch funktionen funkar inte än i postman
-router.patch('/:id', productModel.updateProduct);
+router.patch('/:id',auth.verifyToken, productModel.updateProduct);
 
 // tar bort produkt från databasen
-router.delete('/:id', productModel.deleteProduct);
+router.delete('/:id', auth.verifyToken, productModel.deleteProduct);
 
 module.exports = router;

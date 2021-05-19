@@ -1,6 +1,7 @@
 const mongodb = require('mongoose');
 const User = require('../users/userSchema');
 const bcrypt = require('bcrypt');
+const auth = require('../../authentication/auth')
 
 exports.registerUser = (req, res) = > {
 
@@ -94,7 +95,7 @@ exports.loginUser = (req, res) => {
                         statusCode: 400,
                         status: false,
                         message: 'You made a bad request',
-                        token: 'token'
+                        token: auth.generateToken(user)
                     })
                 }else{
                     res.status(401).json({
