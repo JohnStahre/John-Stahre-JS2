@@ -4,7 +4,8 @@
   <div class="container mt-5">
       <div class="row row-cols-1 row-cols-md-3">
           <!-- loopa ut och skapar en product i components och lägger till den i vår router-->
-         <Product v-for="product in products" :key="product._id" :product="product"/>
+          <!-- skickar in en produkt och då får vi ta emot den i product.vue -->
+         <Product v-for="product in products" :key="product._id" :product="product" />
 
       </div>
   </div>
