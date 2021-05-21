@@ -147,15 +147,13 @@
           <i class="fas fa-cart-arrow-down"></i>
           <span class="badge rounded-pill badge-notification bg-danger">3</span>
         </a>
-        <ul
-          class="dropdown-menu dropdown-menu-end"
-          aria-labelledby="navbarDropdownMenuLink"
-        >
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
           <li><a class="dropdown-item" href="#">My cart</a></li>
           <!-- <li><a class="dropdown-item" href="#">Another news</a></li>
           <li>
             <a class="dropdown-item" href="#">Something else here</a>
           </li> -->
+          <ShoppingCart />
         </ul>
       </li>
       
@@ -201,6 +199,17 @@ export default {
     }
   }
 
+}
+</script>
+
+<script>
+import ShoppingCart from '../ShoppingCart/ShoppingCart'
+export default {
+  name: 'Navbar',
+  components: {
+    ShoppingCart
+  }
+  
 }
 </script>
 
