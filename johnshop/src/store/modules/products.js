@@ -3,17 +3,23 @@ import axios from '@/axios'
 export default {
     state: {
         // lista med produkter i en array
-        products:[]
+        products:[],
+        product: null
     },
  
     getters: {
         // state som skickar state.products
-        products: state => state.products
+        products: state => state.products,
+        product: state => state.product
     },
     mutations: {
         // tillgång till state och vår med produkter, funktion som kan hämta produkterna
         SET_PRODUCTS: (state, products) => {
             state.products = products
+        },
+        SET_PRODUCT: (state, product) =>{
+            state.product = product
+
         }
 
     },
@@ -27,7 +33,7 @@ export default {
     },
     getOneProduct: async ({commit}, id) => {
         const res = await axios.get('products' +id)
-        commit('SET_PRODUCTS', res.data)
+        commit('SET_PRODUCT', res.data)
     }
     }
 }
