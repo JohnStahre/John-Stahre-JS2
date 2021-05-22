@@ -24,6 +24,10 @@ export default {
         const res = await axios.get('products')     
         commit('SET_PRODUCTS', res.data)    
 
+    },
+    getOneProduct: async ({commit}, id) => {
+        const res = await axios.get('products' +id)
+        commit('SET_PRODUCTS', res.data)
     }
     }
 }
