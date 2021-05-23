@@ -147,12 +147,9 @@
           <i class="fas fa-cart-arrow-down"></i>
           <span class="badge rounded-pill badge-notification bg-danger">3</span>
         </a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+        <ul class="dropdown-menu dropdown-menu-end shopping-cart" aria-labelledby="navbarDropdownMenuLink">
           <li><a class="dropdown-item" href="#">My cart</a></li>
-          <!-- <li><a class="dropdown-item" href="#">Another news</a></li>
-          <li>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </li> -->
+        
           <ShoppingCart />
         </ul>
       </li>
@@ -214,5 +211,9 @@ export default {
 </script>
 
 <style>
+.shopping-cart {
+  min-width: 430px;
+
+}
 
 </style>

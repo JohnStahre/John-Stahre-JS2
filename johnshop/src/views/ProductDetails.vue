@@ -24,7 +24,7 @@
 
                 <div class="d-flex justify-content-between align-items-center"> 
                   <h3><span class="text-warning">{{ product.price }}</span>SEK</h3>
-                  <button class="btn btn-primary">add to cart</button>
+                  <button class="btn btn-primary" >add to cart</button>
                 </div>
               </div>
 
@@ -33,7 +33,8 @@
 
       <!-- <div v-else>
           <h3>Loading</h3>
-      </div> -->
+      </div> --> 
+      <!-- laddar emellan kan gör nån spinner eller nåt -->
 
  </div>
 
@@ -47,10 +48,10 @@ export default {
     name: 'ProductDetails',
     props: ['id'],
     methods: {
-        ...mapActions(['getOneProduct', 'cleanup'])
+        ...mapActions(['getOneProduct', 'cleanup', 'addProductToCart'])
     },
     computed: {
-        ...mapGetters(['Product'])
+        ...mapGetters(['products'])
     },
     created() {
         this.getOneProduct(this.id)

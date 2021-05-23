@@ -7,9 +7,10 @@ export default {
         shoppingCart: state => state.cart
     },
     mutations: {
-        ADD_TO_CART: (state, { product, quantity}) => {
-            // om den finns ska det inte läggas till en ny
+        // om den finns ska det inte läggas till en ny
             // kollar igenom carten och kollar igenom produkterna i arrayen jämför id med det som skickas med i funtkionen matrchas id så kommer den finnas med i det objektet annars null
+            
+        ADD_TO_CART: (state, { product, quantity}) => {
             
             let exists = state.cart.find(item => item.product.id === product.id)
             // om den finns
