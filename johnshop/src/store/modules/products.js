@@ -20,6 +20,9 @@ export default {
         SET_PRODUCT: (state, product) =>{
             state.product = product
 
+        },
+        CLEANUP: state => {
+            state.product = null
         }
 
     },
@@ -31,9 +34,13 @@ export default {
         commit('SET_PRODUCTS', res.data)    
 
     },
+    // denna verkar inte skicka vidare så att jag kan visa i min produktdetails. varför ????
     getOneProduct: async ({commit}, id) => {
         const res = await axios.get('products' +id)
         commit('SET_PRODUCT', res.data)
+    },
+    cleanup: ({commit}) => {
+        commit('CLEANUP')
     }
     }
 }
